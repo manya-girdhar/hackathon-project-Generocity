@@ -6,16 +6,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+
+        <!-- Font for tagline -->
+        <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+              integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+              crossorigin="anonymous">
+
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
-        {% block css %}{% endblock %}
+        {% block css %}
+        {% endblock css %}
 
         <title>Generocity</title>
     </head>
     <body>
         <!-- Inserts navbar -->
         {% include "partials/navbar.html" %}
+
         <main role="main" class="container">
             <!-- Allows flashed messages to show -->
             {% with messages = get_flashed_messages(with_categories=true) %}
@@ -25,9 +37,12 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %}
-            
+
             <!-- Inserts content of each template -->
-            {% block content %}{% endblock %}
+            {% block content %}
+            <div class="container-fluid">
+            </div>
+            {% endblock content %}
         </main>
 
         <!-- Optional JavaScript -->
