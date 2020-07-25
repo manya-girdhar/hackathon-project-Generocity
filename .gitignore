@@ -1,6 +1,7 @@
 # Other
 keypath.py
 config.py
+firebase_config.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
