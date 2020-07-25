@@ -3,6 +3,7 @@
 <body>
   <h1 class="center">Our Reach</h1>
   <div id="map"> </div>
+  <div class="fab"> &#x1f4a1;</div>
   <script>
  function initMap(){
    var options = {
@@ -10,39 +11,41 @@
      center:{lat:54.560886, lng:-2.2125118} // current location: UK
    }
 
-   var map = new google.maps.Map(document.getElementById('map'), options);
+var map = new google.maps.Map(document.getElementById('map'), options);
 
- var infoWindow = new google.maps.InfoWindow({
+var infoWindow = new google.maps.InfoWindow({
       content: '<h1>Score</h1>'
-    });
- var marker;
- google.maps.event.addListener(map, 'click', function(event) {
+});
+var marker;
+google.maps.event.addListener(map, 'click', function(event) {
 
     placeMarker(event.latLng);
     infoWindow.open(map, marker);
 
  });
 
- function placeMarker(location) {
+function placeMarker(location) {
 
-     if (marker == null)
+    if (marker == null)
      {
-           marker = new google.maps.Marker({
-              position: location,
-              map: map,
-              icon: "https://img.icons8.com/fluent/48/000000/marker-storm.png"
+          marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            icon: "https://img.icons8.com/fluent/48/000000/marker-storm.png"
            });
      }
-     else
+    else
      {
-         marker.setPosition(location);
+       marker.setPosition(location);
      }
  }
  }
-  </script>
+</script>
 
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt2qCvJx8bnNQjkhHG9qiSsVNzpEYmd6M&callback=initMap">
+<script async defer
+
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt2qCvJx8bnNQjkhHG9qiSsVNzpEYmd6M&callback=initMap">
+
 </script>
 
 </body>
