@@ -2,6 +2,19 @@ from flask import Flask, render_template, url_for, make_response, flash, redirec
 from forms import RegistrationForm, LoginForm
 import os
 import time
+import json
+import pyrebase
+
+# Fixes an issue with pyrebase
+def noquote(s):
+    return s
+pyrebase.pyrebase.quote = noquote
+
+# Initialises Firebase
+from firebase_config import firebase_config
+firebase = pyrebase.initialize_app(firebase_config)
+auth = firebase.auth()
+db = firebase.database()
 
 app = Flask(__name__, static_url_path="", static_folder="../../static/", template_folder="templates/")
 app.config.from_object('config')
