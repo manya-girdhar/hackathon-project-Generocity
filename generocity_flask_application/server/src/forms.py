@@ -1,6 +1,35 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, SelectField, TextAreaField, DateField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
+
+class TaskForm(FlaskForm):
+    title = StringField(
+        "Title",
+        validators=[DataRequired(), Length(max=30)]
+    )
+
+    desc = TextAreaField(
+        "Description",
+        validators=[DataRequired(), Length(max=500)]
+    )
+
+    # points earnt is not a form field
+    # and neither is location
+
+    category = SelectField(
+        "Task Category", choices=[
+            ("n/a", "n/a"),
+            ("gender", "Gender Equality"),
+            ("climate", "Climate Action"),
+            ("poverty", "No Poverty"),
+            ("education", "Quality Education"),
+            ("hunger", "Zero Hunger"),
+        ], default="n/a"
+    )
+
+    submit = SubmitField("Add Task")
+
+
 
 class RegistrationForm(FlaskForm):
     firstname = StringField(
