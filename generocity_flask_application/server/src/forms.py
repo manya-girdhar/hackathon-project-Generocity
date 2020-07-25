@@ -21,6 +21,7 @@ class RegistrationForm(FlaskForm):
     )
 
     location = SelectField("Location", choices=[
+        ("Undeclared", "Undeclared"),
         ("Afganistan"," Afghanistan"),
         ("Albania"," Albania"),
         ("Algeria"," Algeria"),
@@ -267,7 +268,7 @@ class RegistrationForm(FlaskForm):
         ("Zaire"," Zaire"),
         ("Zambia"," Zambia"),
         ("Zimbabwe"," Zimbabwe"),
-    ])
+    ], default="Undeclared")
 
     password = PasswordField(
         "Password",
