@@ -1,0 +1,12 @@
+/* map */
+#map{
+  height: 600px;
+  width: 80em;
+  top: 80px;
+  margin: auto;
+}
+.center{
+  position: relative;
+  top: 90px;
+  text-align: center;
+}

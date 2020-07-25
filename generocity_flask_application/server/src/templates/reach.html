@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filenmae='reach.css')}}">
 {% block content %}
-<body>
   <h1 class="center">Our Reach</h1>
   <div id="map"> </div>
   <div class="fab"> &#x1f4a1;</div>
@@ -48,5 +49,4 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt2qCvJx8bnNQjkhHG9qiSsVN
 
 </script>
 
-</body>
 {% endblock content %}
