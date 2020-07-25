@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block css %}
+{% endblock css %}
+{% block content %}
 <div class="content-section">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
@@ -100,6 +102,4 @@
         <!-- put in route FUNCTION into url_for -->
     </small>
 </div>
-{% endblock %}
-{% block content %}
 {% endblock content %}
