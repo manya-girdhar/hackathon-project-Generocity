@@ -2,18 +2,13 @@
 {% block css %}
 {% endblock %}
 {% block content %}
-<div class="row">
-  <div class="col-lg-12">
-    <!-- <div class="homepage-description"> -->
-      <div class="d-flex justify-content-center banner">
-        <!-- <img src="{{ url_for('static', filename='graphics/banner.gif') }}" alt="Banner" class="img-responsive"/> -->
-        <img src="{{url_for('static', filename='graphics/trial2.png')}}" alt="Banner" class="img-responsive"/>
-        <!-- <video width="320" height="240" autoplay>
-          <source src="{{url_for('static', filename='graphics/trial.mp4')}}" type="video/mp4">
-              Your browser does not support the video tag.
-        </video> -->
-      </div>
-    <!-- </div> -->
-  </div>
+<div class="banner">
+  <img src="{{ url_for('static', filename='graphics/website_banner.png') }}"
+       alt="banner"
+       class="img-responsive"
+       id="logo-image"/>
+  <button class="btn button button4" id="explore_button">Start Now</button>
 </div>
+<div container id="section-divider-1"></div>
+
 {% endblock content %}
