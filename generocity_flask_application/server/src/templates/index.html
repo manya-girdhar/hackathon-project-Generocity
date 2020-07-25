@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block css %}
-
 {% endblock %}
 {% block content %}
+<div class="d-flex justify-content-center banner">
+  <img src="{{ url_for('static', filename='graphics/banner.gif') }}" alt="Banner" class="img-responsive"/>
+</div>
 {% endblock content %}
