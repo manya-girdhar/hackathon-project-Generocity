@@ -5,6 +5,7 @@ import time
 import json
 import pyrebase
 from datetime import datetime
+from sentiment_analysis import analyse_text
 
 # Fixes an issue with pyrebase
 def noquote(s):
@@ -35,7 +36,6 @@ def get_user_data():
     user_id = get_user_id()
     user = dict(db.child("users").order_by_key().equal_to(user_id).get().val())[user_id]
     return user
-
 
 # index route
 @app.route('/')
@@ -133,15 +133,15 @@ def register():
             if error == "EMAIL_EXISTS":
                 flash("This email has already been registered.", "danger")
             print(e)
-        
+
     return render_template("register.html", form=form)
 
 @app.route("/account", methods=["GET", "POST"])
 def account():
     if not auth.current_user:
        return redirect(url_for("index"))
-    
-    
+
+
     form = TaskForm()
     user_id = get_user_id()
 
@@ -150,12 +150,12 @@ def account():
             "title": form.title.data,
             "desc": form.desc.data,
             "timestamp": str(datetime.utcnow()),
-            "p_earnt": 0, #<<<----- add function here mANYAAAA--------------------------------------------------------------
+            "p_earnt": analyse_text(form.desc.data),
             "category": form.category.data
         }
 
         key = db.generate_key()
-        
+
         db.child("users").child(user_id).child("tasks").update({
             key: task
         })

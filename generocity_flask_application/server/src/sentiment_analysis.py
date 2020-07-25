@@ -19,8 +19,8 @@ def analyse_text(project_description_input):
 
 # project description from the form
 # Example text
-project_description_input = "Sundar Pichai said in his keynote that users love their new Android phones."
+# project_description_input = "Sundar Pichai said in his keynote that users love their new Android phones."
 
 # call the function and pass in the parameter
-output = analyse_text(project_description_input)
-print(output)
+# output = analyse_text(project_description_input)
+# print(output)

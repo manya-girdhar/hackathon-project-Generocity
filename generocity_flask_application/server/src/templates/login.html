@@ -2,7 +2,8 @@
 {% block css %}
 {% endblock %}
 {% block content %}
-<div class="">
+<div class="container">
+<div class="container-fluid">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <!-- adds csrf token -->
@@ -48,5 +49,6 @@
     <small class="text-muted">
     Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
     </small>
+</div>
 </div>
 {% endblock content %}

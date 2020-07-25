@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <div class="navbar-header">
       <a class="navbar-brand" href="{{ url_for('index') }}">
         <img src="{{ url_for('static', filename='graphics/generocity.png') }}"
@@ -39,11 +39,18 @@
         <a class="nav-link" href="{{ url_for('register') }}">Register</a>
     </li>
     {% endif %}
+    <ul>
     <a href="#">
+      <button class="btn navbar-btn" id="idea_generator">
+        <i class="fab fa-md"> <a href="" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">&#x1f4a1;</a>
+        </i>
+      </button>
+    </a>
+    <!-- <a href="#">
       <button class="btn navbar-btn" id="idea_generator">
         <i class="fas fa-lightbulb fa-lg" style="color:#F4FFF6;"></i>
       </button>
-    </a>
+    </a> -->
   </ul>
 </div>
 </nav>
