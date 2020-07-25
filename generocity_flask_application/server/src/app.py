@@ -141,7 +141,10 @@ def account():
     if not auth.current_user:
        return redirect(url_for("index"))
     
+    
     form = TaskForm()
+    user_id = get_user_id()
+
     if form.validate_on_submit():
         task = {
             "title": form.title.data,
@@ -152,7 +155,7 @@ def account():
         }
 
         key = db.generate_key()
-        user_id = get_user_id()
+        
         db.child("users").child(user_id).child("tasks").update({
             key: task
         })
@@ -162,8 +165,15 @@ def account():
         return redirect(url_for("account"))
         #^ have to do to avoid POST message...
 
+    tasks = db.child("users").child(user_id).child("tasks").get().each()
+    if tasks:
+        tasks = [task.val() for task in tasks]
+    else:
+        tasks = []
+
+
     global user
-    return render_template("user_homepage.html", user=user, form=form)
+    return render_template("user_homepage.html", user=user, form=form, tasks=tasks)
 
 @app.route("/logout")
 def logout():
