@@ -6,6 +6,7 @@ import json
 import pyrebase
 from datetime import datetime
 from sentiment_analysis import analyse_text
+from idea_generator import generate_idea
 
 # Fixes an issue with pyrebase
 def noquote(s):
@@ -53,7 +54,7 @@ def reach():
     global user
 
     countries = dict(db.child("countries").get().val())
-    return render_template("reach.html", user=user, countries=countries, page="reach")
+    return render_template("reach.html", user=user, countries=countries, generator=generate_idea)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

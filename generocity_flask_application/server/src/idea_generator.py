@@ -9,7 +9,8 @@ def generate_idea():
     list = df['Kind Acts'].tolist()
     index = random.randint(0, len(list)-1)
     idea = list[index]
+    print("hi")
     return idea
 
 # call function
-print(generate_idea())
+# print(generate_idea())

@@ -101,46 +101,19 @@
   <!-- Add achivements/ image gallery -->
   <div class="container col-md-12" id="highlights">
     <h3> Awards </h3>
-    <div class="achievement" id="achievement-0">
-      <img src="{{ url_for('static', filename='graphics/badges/welcome_badge.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="description">Welcome Badge</div>
-    </div>
-    <div class="achievement" id="achievement-1">
-      <img src="{{ url_for('static', filename='graphics/badges/1actofkindness.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="description">1st act of kindness</div>
-    </div>
-    <div class="achievement" id="achievement-2">
-      <img src="{{ url_for('static', filename='graphics/badges/10actsofkindness.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="description">10 acts of kindness</div>
-    </div>
-    <div class="achievement" id="achievement-3">
-      <img src="{{ url_for('static', filename='graphics/badges/50actsofkindness.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="description">50 acts of kindness</div>
-    </div>
-    <div class="achievement" id="achievement-4">
-      <img src="{{ url_for('static', filename='graphics/badges/100actsofkindness.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="description">100 acts of kindness</div>
-    </div>
-    <div class="achievement" id="achievement-5">
-      <img src="{{ url_for('static', filename='graphics/badges/climate_action.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="description">UN Goal: Climate Action</div>
-    </div>
-    <div class="achievement" id="achievement-6">
-      <img src="{{ url_for('static', filename='graphics/badges/gender_equality.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="description">UN Goal: Gender Equality</div>
-    </div>
-    <div class="achievement" id="achievement-7">
-      <img src="{{ url_for('static', filename='graphics/badges/no_poverty.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="description">UN Goal: No Poverty</div>
-    </div>
-    <div class="achievement" id="achievement-8">
-      <img src="{{ url_for('static', filename='graphics/badges/quality_education.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="description">UN Goal: Quality Education</div>
-    </div>
-    <div class="achievement" id="achievement-9">
-      <img src="{{ url_for('static', filename='graphics/badges/zero_hunger.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="description">UN Goal: Zero Hunger</div>
-    </div>
+    {% for name, b in badges %}
+      {% if b in user.b_earnt.keys() %}
+      <div class="achievement achieved">
+        <img src="{{ url_for('static', filename='graphics/badges/{}.jpg'.format(b))}}" alt="Achievement achieved" width="600" height="400">
+        <div class="description">{{ name }}</div>
+      </div>
+      {% else %}
+      <div class="achievement">
+        <img src="{{ url_for('static', filename='graphics/badges/{}.jpg'.format(b))}}" alt="Achievement unachieved" width="600" height="400">
+        <div class="description">{{ name }}</div>
+      </div>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 {% endblock content %}
