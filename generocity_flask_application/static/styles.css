@@ -1,3 +1,7 @@
+html{
+  scroll-behavior: smooth;
+}
+
 h3{
   padding-top: 2%;
   color: #343A40;
@@ -37,13 +41,43 @@ height: 10px;
   background-color: 10%;
   display: inline-block;
   border-radius: 5%;
+  margin-left: 5%;
 }
 
 #round_button{
   border-radius: 50%;
+  margin: 2%;
+  display: inline-block;
 }
 
 #seperator{
   background-color: #343A40;
   height: 2%;
+}
+
+div.achievement {
+  border: 1% solid #343A40;
+  float: left;
+  /* margin: 1%; */
+  width: 180px;
+  display: inline-block;
+  opacity: 50%;
+}
+
+div.achievement img {
+  height: auto;
+  width: 100%;
+}
+
+div.achievement:hover {
+  border: 1.5px solid #000;
+}
+
+div.description {
+  /* padding: 15px; */
+  text-align: center;
+}
+
+#achievement-0{
+  opacity: 100%;
 }

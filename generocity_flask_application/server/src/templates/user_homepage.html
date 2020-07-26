@@ -5,40 +5,34 @@
 {% block content %}
 <div class="row">
   <div class="container w3-container" id="header"><p></p></div>
-  <div class="container col-md-6">
+  <div class="container col-md-8">
     <h3>Welcome {{ user.firstname }}!</h3>
     <h6>Location: {{user.location}}</h6>
   </div>
-  <div class = "container col-md-6" id="score_display">
+
+  <div class = "container col-md-4" id="score_display">
+    <div class = "row ml-auto">
+      <button class="btn btn-default btn-warning addMore"
+              title="Achievements"
+              id="round_button"
+              onclick="window.location.href='#highlights';">
+        <i class="fas fa-trophy"></i>
+      </button>
+
+      <button class="btn btn-default btn-success addMore" title="Reviews" id="round_button">
+        <i class="fas fa-users"></i>
+      </button>
+
+      <button class="btn btn-default btn-info addMore" title="Share" id="round_button">
+        <i class="fas fa-share"></i>
+      </button>
+
     <div id="rect">
       <h4>Score: {{ user.points }}</h4>
     </div>
-  </div>
-  <hr>
-  <div class="container w1-container" id="seperator"><p></p></div>
-  <button type="button" class="collapsible">Open Collapsible</button>
-    <div class="content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat.</p>
     </div>
-  <!-- Add achivvements/ image gallery -->
-  <div class="container col-md-12" id="highlights">
-    <!-- Every project -->
-    <div class="gallery">
-      <!-- badge image -->
-      <img src="{{ url_for('static', filename='graphics/badges/welcome_badge.jpg')}}" alt="Achievement" width="600" height="400">
-      <div class="desc">
-        <div class="collapse">Open Collapsible</div>
-        <div class="content" id="overlay">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </div>
-    </div>
-
   </div>
-  <div class="container col-md-11">
+  <div class="container col-md-12">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <!-- adds csrf token -->
@@ -90,27 +84,51 @@
         </div>
     </form>
     </div>
-    <div class = "container col-md-1">
-      <!-- other options -->
-      <div class="col-md-3">
-        <div class="row-md-10">
-          <button class="btn btn-default btn-warning addMore" title="Achievements" id="round_button">
-            <i class="fas fa-trophy"></i>
-          </button>
-        </div>
-        <br>
-        <div class="row-md-10">
-          <button class="btn btn-default btn-success addMore" title="Reviews" id="round_button">
-            <i class="fas fa-users"></i>
-          </button>
-        </div>
-        <br>
-        <div class="row-md-10">
-          <button class="btn btn-default btn-info addMore" title="Share" id="round_button">
-            <i class="fas fa-share"></i>
-          </button>
-        </div>
-      </div>
+  <div class="container w1-container" id="seperator"><p></p></div>
+
+  <!-- Add achivements/ image gallery -->
+  <div class="container col-md-12" id="highlights">
+    <h3> Awards </h3>
+    <div class="achievement" id="achievement-0">
+      <img src="{{ url_for('static', filename='graphics/badges/welcome_badge.jpg')}}" alt="Achievement" width="600" height="400">
+      <div class="description">Welcome Badge</div>
     </div>
+    <div class="achievement" id="achievement-1">
+      <img src="{{ url_for('static', filename='graphics/badges/1actofkindness.jpg')}}" alt="Achievement" width="600" height="400">
+      <div class="description">1st act of kindness</div>
+    </div>
+    <div class="achievement" id="achievement-2">
+      <img src="{{ url_for('static', filename='graphics/badges/10actsofkindness.jpg')}}" alt="Achievement" width="600" height="400">
+      <div class="description">10 acts of kindness</div>
+    </div>
+    <div class="achievement" id="achievement-3">
+      <img src="{{ url_for('static', filename='graphics/badges/50actsofkindness.jpg')}}" alt="Achievement" width="600" height="400">
+      <div class="description">50 acts of kindness</div>
+    </div>
+    <div class="achievement" id="achievement-4">
+      <img src="{{ url_for('static', filename='graphics/badges/100actsofkindness.jpg')}}" alt="Achievement" width="600" height="400">
+      <div class="description">100 acts of kindness</div>
+    </div>
+    <div class="achievement" id="achievement-5">
+      <img src="{{ url_for('static', filename='graphics/badges/climate_action.jpg')}}" alt="Achievement" width="600" height="400">
+      <div class="description">UN Goal: Climate Action</div>
+    </div>
+    <div class="achievement" id="achievement-6">
+      <img src="{{ url_for('static', filename='graphics/badges/gender_equality.jpg')}}" alt="Achievement" width="600" height="400">
+      <div class="description">UN Goal: Gender Equality</div>
+    </div>
+    <div class="achievement" id="achievement-7">
+      <img src="{{ url_for('static', filename='graphics/badges/no_poverty.jpg')}}" alt="Achievement" width="600" height="400">
+      <div class="description">UN Goal: No Poverty</div>
+    </div>
+    <div class="achievement" id="achievement-8">
+      <img src="{{ url_for('static', filename='graphics/badges/quality_education.jpg')}}" alt="Achievement" width="600" height="400">
+      <div class="description">UN Goal: Quality Education</div>
+    </div>
+    <div class="achievement" id="achievement-9">
+      <img src="{{ url_for('static', filename='graphics/badges/zero_hunger.jpg')}}" alt="Achievement" width="600" height="400">
+      <div class="description">UN Goal: Zero Hunger</div>
+    </div>
+  </div>
 </div>
 {% endblock content %}
