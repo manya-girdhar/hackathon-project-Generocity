@@ -141,7 +141,7 @@ def account():
     if not auth.current_user:
        return redirect(url_for("index"))
 
-
+    global user
     form = TaskForm()
     user_id = get_user_id()
 
@@ -156,9 +156,39 @@ def account():
 
         key = db.generate_key()
 
+        # alt way of updating database
         db.child("users").child(user_id).child("tasks").update({
             key: task
         })
+
+        new = db.child("users").child(user_id).child("points").get().val() + task["p_earnt"]
+        db.child("users").child(user_id).update({
+            "points": new
+        })
+
+        user = get_user_data()
+        # updating user in case new points were earnt
+
+        for badge in user["b_unearnt"].keys():
+            if ((badge == task["category"]) or
+                (badge == "one" and len(user["tasks"]) >= 1) or
+                (badge == "ten" and len(user["tasks"]) >= 10) or
+                (badge == "hundred" and len(user["tasks"]) >= 100)):
+                    db.child("users").child(user_id).child("b_earnt").update({
+                        badge: True
+                    })
+                    db.child("users").child(user_id).child("b_unearnt").update({
+                        badge: None
+                    })
+
+        user = get_user_data()
+        # updating user in case new badges were earnt
+
+        print(user)
+        print(user["b_unearnt"])
+        print(task["category"] in user["b_unearnt"])
+
+        
 
 
         flash('Your task has been added!', 'success')
@@ -172,7 +202,7 @@ def account():
         tasks = []
 
 
-    global user
+    
     return render_template("user_homepage.html", user=user, form=form, tasks=tasks)
 
 @app.route("/logout")
