@@ -2,10 +2,10 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+/* body { */
     /* height: 90vh; */
     /* background-color: #F9BCDD; */
-}
+/* } */
 
 /* padding of elements on navbar */
 .navbar-nav > li{

@@ -32,7 +32,7 @@
     </div>
     </div>
   </div>
-  <div class="container col-md-12">
+  <div class="container col-md-6">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <!-- adds csrf token -->
@@ -84,8 +84,20 @@
         </div>
     </form>
     </div>
-  <div class="container w1-container" id="seperator"><p></p></div>
 
+    <div class="container col-md-6">
+      <div id="vertical_seperator">
+        <br>
+        <fieldset class="form-group">
+            <legend class="border-bottom xs-2">Previously Logged Tasks</legend>
+        </fieldset>
+        <div class="container task">
+        </div>
+      </div>
+
+    </div>
+
+  <div class="container w1-container" id="seperator"><p></p></div>
   <!-- Add achivements/ image gallery -->
   <div class="container col-md-12" id="highlights">
     <h3> Awards </h3>
