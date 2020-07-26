@@ -51,7 +51,9 @@ def index():
 @app.route("/reach")
 def reach():
     global user
-    return render_template("reach.html", user=user)
+
+    countries = dict(db.child("countries").get().val())
+    return render_template("reach.html", user=user, countries=countries)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -182,13 +184,7 @@ def account():
                     })
 
         user = get_user_data()
-        # updating user in case new badges were earnt
-
-        print(user)
-        print(user["b_unearnt"])
-        print(task["category"] in user["b_unearnt"])
-
-        
+        # updating user in case new badges were earnt        
 
 
         flash('Your task has been added!', 'success')

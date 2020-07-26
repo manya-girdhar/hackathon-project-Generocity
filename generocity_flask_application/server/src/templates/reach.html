@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block css %}
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='reach.css')}}">
 {% endblock %}
-
 {% block content %}
   <h1 class="center">Our Reach</h1>
   <div id="map"> </div>
@@ -13,45 +13,49 @@
   <script>
  function initMap(){
    var options = {
-     zoom:8,
+     zoom: 2,
      center:{lat:54.560886, lng:-2.2125118} // current location: UK
    }
-
 var map = new google.maps.Map(document.getElementById('map'), options);
-
 var infoWindow = new google.maps.InfoWindow({
-      content: '<h1>Score</h1>'
+      content: '<h5>total no. of users</h5>'
 });
-var marker;
-google.maps.event.addListener(map, 'click', function(event) {
-
-    placeMarker(event.latLng);
-    infoWindow.open(map, marker);
-
- });
-
-function placeMarker(location) {
-
-    if (marker == null)
-     {
-          marker = new google.maps.Marker({
-            position: location,
-            map: map,
-            icon: "https://img.icons8.com/fluent/48/000000/marker-storm.png"
+//var marker;
+var icon = {
+    url: "https://img.icons8.com/fluent/48/000000/marker-storm.png", // url
+    scaledSize: new google.maps.Size(30,30) // scaled size
+};
+//google.maps.event.addListener(map, 'click', function(event) {
+  //  placeMarker(event.latLng);
+    //infoWindow.open(map, marker);
+ //});
+ geocoder = new google.maps.Geocoder();
+function getCountry(country) {
+    geocoder.geocode( { 'address': country }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          // map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+               map: map,
+               position: results[0].geometry.location,
+               icon: icon
            });
-     }
-    else
-     {
-       marker.setPosition(location);
-     }
- }
+         var infoWindow = new google.maps.InfoWindow({
+                 content: '<h5>total no. of users</h5>'
+           });
+        infoWindow.open(map, marker);
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+    });
+}
+let countries = {{ countries|tojson }}
+for (let country in countries) {
+  getCountry(country);
+}
  }
 </script>
-
 <script async defer
-
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt2qCvJx8bnNQjkhHG9qiSsVNzpEYmd6M&callback=initMap">
 
 </script>
-
 {% endblock content %}
