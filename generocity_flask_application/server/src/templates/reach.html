@@ -6,11 +6,14 @@
 {% block content %}
 <h1 class="center">Our Reach</h1>
 <div id="map"> </div>
-<div class="fab"> <a href="javascript:void(0)" style="text-decoration: none;" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">&#x1f4a1;</a></div>
-<div id="light" class="content">Generocity ideas 101: {{ generator() }}<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+<div class="fab"> <a href="javascript:void(0)" style="text-decoration: none;" onclick="generateIdea();document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">&#x1f4a1;</a></div>
+<div id="light" class="content">Generocity ideas 101: {{ generator() }} <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
   </div>
   <div id="fade" class="overlay"></div>
   <script>
+function generateIdea(){
+  console.log('{{ generator() }}');
+}
  function initMap(){
    var options = {
      zoom: 2,
