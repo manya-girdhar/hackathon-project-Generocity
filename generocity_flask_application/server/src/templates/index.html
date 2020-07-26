@@ -7,7 +7,12 @@
        alt="banner"
        class="img-responsive"
        id="logo-image"/>
-  <button class="btn button button4" id="explore_button">Start Now</button>
+    {% if user %}
+    <a href="{{ url_for('account') }}" class="btn button button4" id="explore_button">Start Now</a>
+    {% else %}
+    <a href="{{ url_for('register') }}" class="btn button button4" id="explore_button">Start Now</a>
+    {% endif %}
+  
 </div>
 <div container id="section-divider-1"></div>
 
