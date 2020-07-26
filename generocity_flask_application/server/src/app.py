@@ -95,18 +95,18 @@ def register():
                 "points": 0,
                 "tasks": 0,
                 "b_earnt": {
-                    "welcome": True
+                    "welcome_badge": True
                 },
                 "b_unearnt": {
-                    "one": True,
-                    "ten": True,
-                    "fifty": True,
-                    "hundred": True,
-                    "climate": True,
-                    "gender": True,
-                    "poverty": True,
-                    "education": True,
-                    "hunger": True
+                    "1actofkindness": True,
+                    "10actsofkindness": True,
+                    "50actsofkindness": True,
+                    "100actsofkindness": True,
+                    "climate_action": True,
+                    "gender_equality": True,
+                    "no_poverty": True,
+                    "quality_education": True,
+                    "zero_hunger": True
                 }
             }
 
@@ -135,6 +135,8 @@ def register():
             if error == "EMAIL_EXISTS":
                 flash("This email has already been registered.", "danger")
             print(e)
+
+    
 
     return render_template("register.html", form=form)
 
@@ -173,9 +175,10 @@ def account():
 
         for badge in user["b_unearnt"].keys():
             if ((badge == task["category"]) or
-                (badge == "one" and len(user["tasks"]) >= 1) or
-                (badge == "ten" and len(user["tasks"]) >= 10) or
-                (badge == "hundred" and len(user["tasks"]) >= 100)):
+                (badge == "1actofkindness" and len(user["tasks"]) >= 1) or
+                (badge == "10actsofkindness" and len(user["tasks"]) >= 10) or
+                (badge == "50actsofkindness" and len(user["tasks"]) >= 50) or 
+                (badge == "100actsofkindness" and len(user["tasks"]) >= 100)):
                     db.child("users").child(user_id).child("b_earnt").update({
                         badge: True
                     })
@@ -197,9 +200,13 @@ def account():
     else:
         tasks = []
 
+    badge_names_ordered = [("Welcome", "welcome_badge"),
+     ("1st act of kindness", "1actofkindness"), ("10th act of kindness", "10actsofkindness"),
+     ("50th act of kindness", "50actsofkindness"), ("100th act of kindness", "100actsofkindness"),
+     ("Climate action", "climate_action"), ("Gender Equality", "gender_equality"),
+     ("No Poverty", "no_poverty"), ("Quality Education", "quality_education"), ("Zero Hunger", "zero_hunger")]
 
-
-    return render_template("user_homepage.html", user=user, form=form, tasks=tasks)
+    return render_template("user_homepage.html", user=user, form=form, tasks=tasks, badges=badge_names_ordered)
 
 @app.route("/logout")
 def logout():

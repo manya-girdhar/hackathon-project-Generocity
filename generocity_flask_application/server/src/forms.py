@@ -19,11 +19,11 @@ class TaskForm(FlaskForm):
     category = SelectField(
         "Task Category", choices=[
             ("n/a", "n/a"),
-            ("gender", "Gender Equality"),
-            ("climate", "Climate Action"),
-            ("poverty", "No Poverty"),
-            ("education", "Quality Education"),
-            ("hunger", "Zero Hunger"),
+            ("gender_equality", "Gender Equality"),
+            ("climate_action", "Climate Action"),
+            ("no_poverty", "No Poverty"),
+            ("quality_education", "Quality Education"),
+            ("zero_hunger", "Zero Hunger"),
         ], default="n/a"
     )
 
