@@ -27,35 +27,26 @@
     <body>
         <!-- Inserts navbar -->
         {% include "partials/navbar.html" %}
-
-        <main role="main">
-            <!-- Allows flashed messages to show -->
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}">{{ message }}</div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-
-            <!-- Inserts content of each template -->
-            {% block content %}
-            <!-- <div class="container-fluid">
-            </div> -->
-            {% endblock content %}
-
-            <!-- <div class="footer">
-              <div class="container">
-                <div class="row">
-                  <div class="menu">
-                    <ul>
-                      <li><a class="cta" href="">Terms and Conditions</a></li>
-                    </ul>
-                  </div>
-                </div>
+        {% if (page == "index") %}
+          {% block content_1 %}
+          {% endblock content_1 %}
+        {% else %}
+          <main role="main" class="container">
+              <!-- Allows flashed messages to show -->
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                      {% for category, message in messages %}
+                          <div class="alert alert-{{ category }}">{{ message }}</div>
+                      {% endfor %}
+                  {% endif %}
+              {% endwith %}
+              <!-- Inserts content of each template -->
+              {% block content %}
+              <div class="container-fluid">
               </div>
-            </div> -->
-        </main>
+              {% endblock content %}
+          </main>
+        {% endif %}
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

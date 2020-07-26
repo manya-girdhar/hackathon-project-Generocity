@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block css %}
 {% endblock %}
-{% block content %}
+{% block content_1 %}
 <div class="banner">
   <img src="{{ url_for('static', filename='graphics/website_banner.png') }}"
        alt="banner"
@@ -12,8 +12,8 @@
     {% else %}
     <a href="{{ url_for('register') }}" class="btn button button4" id="explore_button">Start Now</a>
     {% endif %}
-  
+
 </div>
 <div container id="section-divider-1"></div>
 
-{% endblock content %}
+{% endblock content_1 %}

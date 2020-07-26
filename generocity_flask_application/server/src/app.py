@@ -46,14 +46,14 @@ def index():
         print("logged out")
 
     global user
-    return render_template('index.html', user=user)
+    return render_template('index.html', user=user, page="index")
 
 @app.route("/reach")
 def reach():
     global user
 
     countries = dict(db.child("countries").get().val())
-    return render_template("reach.html", user=user, countries=countries)
+    return render_template("reach.html", user=user, countries=countries, page="reach")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -184,7 +184,7 @@ def account():
                     })
 
         user = get_user_data()
-        # updating user in case new badges were earnt        
+        # updating user in case new badges were earnt
 
 
         flash('Your task has been added!', 'success')
@@ -198,7 +198,7 @@ def account():
         tasks = []
 
 
-    
+
     return render_template("user_homepage.html", user=user, form=form, tasks=tasks)
 
 @app.route("/logout")
